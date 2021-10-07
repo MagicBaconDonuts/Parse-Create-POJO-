@@ -12,8 +12,6 @@ public class UserService {
 	}
 	
 	
-	
-	
 	public UserLoginApplication loadUsers(String users) {
 		UserLoginApplication user = null;
 		

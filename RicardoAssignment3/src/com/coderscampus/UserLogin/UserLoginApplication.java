@@ -17,10 +17,11 @@ public class UserLoginApplication {
 		Scanner scanner = new Scanner(System.in);
 		String responseUser;
 		String responsePass;
-		int loginAttempets = 0;
+		int loginAttempts = 0;
+		boolean loggedIn = false;
 
 		
-		while (loginAttempets < 5) {
+		while (loggedIn != true) {
 			System.out.println("Enter your email:");
 			responseUser = scanner.nextLine();
 			System.out.println("Enter your password:");
@@ -59,7 +60,6 @@ public class UserLoginApplication {
 			users[i] = userService.createUser(info);
 			users[i].print();
 		}
-//		User[] userTest = new User[2];
 
 	}
 
