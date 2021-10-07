@@ -21,13 +21,13 @@ public class UserLoginApplication {
 		boolean loggedIn = false;
 
 		
-		while (loggedIn != true) {
+//		while (loggedIn != true) {
 			System.out.println("Enter your email:");
 			responseUser = scanner.nextLine();
 			System.out.println("Enter your password:");
 			responsePass = scanner.nextLine();
-			userService.checkValidation(responseUser, responsePass);
-		}
+			userService.checkValidation(responseUser, responsePass); //Calling onto the method I dont know how to make
+//		}
 		scanner.close();
 
 		BufferedReader fileReader = null;
@@ -36,7 +36,7 @@ public class UserLoginApplication {
 			fileReader = new BufferedReader(new FileReader("data.txt"));
 			for (int i = 0; i < 4; i++) {
 				storedInfo[i] = fileReader.readLine();
-				System.out.println(storedInfo[i]);
+				System.out.println(storedInfo[i]); //Testing
 			}
 		} catch (FileNotFoundException e) {
 			System.out.println("There was a File Not Found Exception");
@@ -58,9 +58,10 @@ public class UserLoginApplication {
 		for (int i = 0; i < 4; i++) {
 			info = storedInfo[i].split(",");
 			users[i] = userService.createUser(info);
-			users[i].print();
+			users[i].print(); //Testing
 		}
 
+		
 	}
 
 }
