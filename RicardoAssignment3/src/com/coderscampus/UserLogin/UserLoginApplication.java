@@ -42,9 +42,9 @@ public class UserLoginApplication {
 			info = storedInfo[i].split(",");
 			users[i] = userService.createUser(info);
 			users[i].print(); //Testing
-		}
+		} System.out.println(users);
 		
-//		users[0].print();
+		System.out.println(users[0].getName());
 //		users[1].print();
 //		users[2].print();
 //		users[3].print();
