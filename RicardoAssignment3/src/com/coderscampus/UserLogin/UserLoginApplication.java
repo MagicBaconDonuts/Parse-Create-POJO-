@@ -10,25 +10,8 @@ public class UserLoginApplication {
 
 	public static void main(String[] args) {
 
-		// 1.Ask for username 2. Ask for password 3. Create method to valid user info
-		// .equals if true print match if not no match 5. if fail on the fifth try stop
-
 		UserService userService = new UserService();
 		Scanner scanner = new Scanner(System.in);
-		String responseUser;
-		String responsePass;
-		int loginAttempts = 0;
-		boolean loggedIn = false;
-
-		
-//		while (loggedIn != true) {
-			System.out.println("Enter your email:");
-			responseUser = scanner.nextLine();
-			System.out.println("Enter your password:");
-			responsePass = scanner.nextLine();
-			userService.checkValidation(responseUser, responsePass); //Calling onto the method I dont know how to make
-//		}
-		scanner.close();
 
 		BufferedReader fileReader = null;
 		String[] storedInfo = new String[4];
@@ -36,7 +19,7 @@ public class UserLoginApplication {
 			fileReader = new BufferedReader(new FileReader("data.txt"));
 			for (int i = 0; i < 4; i++) {
 				storedInfo[i] = fileReader.readLine();
-				System.out.println(storedInfo[i]); //Testing
+//				System.out.println(storedInfo[i]); //Testing
 			}
 		} catch (FileNotFoundException e) {
 			System.out.println("There was a File Not Found Exception");
@@ -60,8 +43,35 @@ public class UserLoginApplication {
 			users[i] = userService.createUser(info);
 			users[i].print(); //Testing
 		}
-
 		
+//		users[0].print();
+//		users[1].print();
+//		users[2].print();
+//		users[3].print();
+
+		String responseUser;
+		String responsePass;
+		int loginAttempts = 0;
+		boolean loggedIn = false;
+
+		while (loggedIn != true) {
+			System.out.println("Enter your email:");
+			responseUser = scanner.nextLine();
+			System.out.println("Enter your password:");
+			responsePass = scanner.nextLine();
+			userService.checkValidation(responseUser, responsePass, users[0]);
+			if (userService.success == false) {
+				System.out.println("Invalid login, please try again");
+				loginAttempts++;
+			} else if (userService.success == true) {
+				loggedIn = true;
+			}
+			if (loginAttempts == 5) {
+				System.out.println("Too many failed login attempts, you are now locked out.");
+				break;
+			}
+		}
+		scanner.close();
 	}
 
 }
