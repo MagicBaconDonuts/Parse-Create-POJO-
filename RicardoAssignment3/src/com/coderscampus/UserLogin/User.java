@@ -9,6 +9,10 @@ public class User {
 		System.out.println(username + password + name);
 	}
 	
+	public String toString() {
+		return username + password + name;
+	}
+	
 	public String getUsername() {
 		return username;
 	}
