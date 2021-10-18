@@ -7,7 +7,6 @@ public class UserService {
 		user.setUsername(info[0]);
 		user.setPassword(info[1]);
 		user.setName(info[2]);
-//		System.out.println("UserCreated");
 		return user;
 	}
 	
@@ -19,4 +18,5 @@ public class UserService {
 			success = true;
 		}
 	}
+
 }

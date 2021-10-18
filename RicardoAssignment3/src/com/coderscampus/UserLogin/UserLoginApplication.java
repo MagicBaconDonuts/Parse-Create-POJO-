@@ -19,7 +19,6 @@ public class UserLoginApplication {
 			fileReader = new BufferedReader(new FileReader("data.txt"));
 			for (int i = 0; i < 4; i++) {
 				storedInfo[i] = fileReader.readLine();
-//				System.out.println(storedInfo[i]); //Testing
 			}
 		} catch (FileNotFoundException e) {
 			System.out.println("There was a File Not Found Exception");
@@ -37,17 +36,16 @@ public class UserLoginApplication {
 		}
 
 		User[] users = new User[4];
-		String[] info = new String[4];
+		String[] info = new String[3];
 		for (int i = 0; i < 4; i++) {
+			
 			info = storedInfo[i].split(",");
 			users[i] = userService.createUser(info);
 			users[i].print(); //Testing
-		} System.out.println(users);
+			System.out.println(users[i]);
+		}
 		
 		System.out.println(users[0].getName());
-//		users[1].print();
-//		users[2].print();
-//		users[3].print();
 
 		String responseUser;
 		String responsePass;
@@ -56,7 +54,7 @@ public class UserLoginApplication {
 
 		while (loggedIn != true) {
 			System.out.println("Enter your email:");
-			responseUser = scanner.nextLine();
+ 			responseUser = scanner.nextLine();
 			System.out.println("Enter your password:");
 			responsePass = scanner.nextLine();
 			userService.checkValidation(responseUser, responsePass, users[0]);
