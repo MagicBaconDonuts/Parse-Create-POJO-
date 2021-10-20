@@ -1,9 +1,9 @@
 package com.coderscampus.UserLogin;
 
 public class User {
-	private static String username;
-	private static String password;
-	private static String name;
+	private String username;
+	private String password;
+	private String name;
 	
 	public void print() {
 		System.out.println(username + password + name);

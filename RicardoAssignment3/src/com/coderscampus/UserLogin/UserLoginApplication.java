@@ -21,7 +21,6 @@ public class UserLoginApplication {
 			for (int i = 0; i < 4; i++) {
 				storedInfo = fileReader.readLine();
 				users[i] = userService.createUser(storedInfo.split(","));
-				
 			}
 		} catch (FileNotFoundException e) {
 			System.out.println("There was a File Not Found Exception");
@@ -37,11 +36,6 @@ public class UserLoginApplication {
 				e.printStackTrace();
 			}
 		}
-
-		for(User user: users) {
-			System.out.println(user);
-		}
-//		System.out.println(users[0].getName());
 
 		String responseUser;
 		String responsePass;
@@ -59,7 +53,6 @@ public class UserLoginApplication {
 				loginAttempts++;
 			} else if (user != null) {
 				loggedIn = true;
-				System.out.println(user);
 			}
 			if (loginAttempts == 5) {
 				System.out.println("Too many failed login attempts, you are now locked out.");
